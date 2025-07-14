@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Pacifico&family=Space+Grotesk:wght@300..700&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --header-height: 3.5rem;
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(93, 54%, 54%);
+    --first-color-alt: hsl(93, 50%, 48%);
+    --first-color-light: hsl(93, 58%, 66%);
+    --title-color: hsl(228, 8%, 98%);
+    --text-color: hsl(228, 8%, 70%);
+    --white-color: hsl(228, 8%, 98%);
+    --black-color: hsl(228, 6%, 4%);
+    --body-color: hsl(228, 6%, 8%);
+    --container-color: hsl(228, 6%, 12%);
+    --shadow-img: 0 0 48px hsla(93, 54%, 54%, .4);
+    --gradient-card: linear-gradient(180deg,
+            hsla(93, 8%, 8%),
+            hsla(93, 40%, 30%));
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat", sans-serif;
+    --biggest-font-size: 2.25rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+    :root {
+        --biggest-font-size: 4.25rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+    }
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-block: 5rem 1rem;
+}
+
+.section__title {
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-bold);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.main {
+    overflow: hidden;
+}
+
+
+body {
+    font-family: 'Caprasimo', cursive;
+
+}
+
+.header {
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+}
+
+.blur-header::after {
+    position: absolute;
+    width: 1000%;
+    height: 100%;
+    content: '';
+    background-color: hsla(228, 24%, 6%, .2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+.nav_container {
+    position: relative;
+    display: flex;
+    height: var(--header-height);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navlogo,
+.close,
+.actions,
+.toggle {
+    display: flex;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+.navlogo {
+    font-weight: var(--font-semi-bold);
+    column-gap: 0.25rem;
+    align-items: center;
+}
+
+.navlogo i {
+    color: var(--first-color);
+    font-size: 1.25rem;
+    font-weight: initial;
+}
+
+.actions {
+    font-size: 1.25rem;
+    column-gap: 0.5rem;
+    align-items: center;
+
+}
+
+/*=========== navigation or mobile device =============*/
+
+@media screen and (max-width: 1150px) {
+    .nav_menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: hsla(228, 24%, 6%, .2);
+        backdrop-filter: blur(16px);
+        width: 80%;
+        height: 100%;
+        padding: 6rem 3rem 0;
+        transition: right .4s;
+        -webkit-backdrop-filter: blur(16px);
+    }
+}
+
+
+.nav_list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.nav_link {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    transition: color .4s;
+}
+
+nav_link:hover {
+    color: var(--first-color);
+}
+
+.close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.show-menu {
+    right: 0;
+}
+
+.home_container {
+    padding-top: 2.5rem;
+    row-gap: 2rem;
+}
+
+.home_img {
+    width: 270px;
+    filter: drop-shadow(var(--shadow-img));
+    justify-self: center;
+}
+
+.home_data {
+    text-align: center;
+}
+
+.home_title {
+    font-size: var(--biggest-font-size);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
+}
+
+.home_title span {
+    color: var(--first-color);
+}
+
+.home_desc {
+    margin-bottom: 3rem;
+}
+
+.home_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.btn {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    font-weight: var(--font-bold);
+    padding: .5rem 1.5rem .5rem .5rem;
+    border-radius: 4rem;
+    display: inline-flex;
+    align-items: center;
+    column-gap: .75rem;
+}
+
+.btn span {
+    background-color: var(--first-color);
+    padding: .5rem;
+    font-size: 1.25rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: transform .02s;
+}
+
+.btn span:hover {
+    transform: translateX(0.15rem) rotate(-30deg);
+}
+
+.btn_link {
+    color: var(--white-color);
+    font-weight: var(--font-bold);
+    text-decoration: underline;
+    transition: color .4s;
+}
+
+.btn_link:hover {
+    color: var(--first-color);
+}
+
+.new_data {
+    text-align: center;
+}
+
+.new_container {
+    row-gap: 7.5rem;
+
+}
+
+.new_content {
+    row-gap: 6rem;
+}
+
+.new_card {
+    position: relative;
+    width: 200px;
+    background-color: var(--gradient-card);
+    border-radius: 1.5rem;
+    border: 2px solid var(--first-color-light);
+    padding: 9rem .75rem 1.5rem .75rem;
+}
+
+.new_image {
+    position: absolute;
+    top: -4.5rem;
+    right: 0;
+    left: 0;
+    width: 180px;
+    transition: transform .4s;
+    margin: 0 auto;
+}
+
+.new_title {
+    font-size: var(--h2-font-size);
+    text-align: center;
+}
+
+.new_card :nth-child(odd) {
+    rotate: -5deg;
+}
+
+.new_card:nth-child(even) {
+    justify-self: flex-end;
+    rotate: 5deg;
+}
+
+.new_card:hover .new_image {
+    transform: translateY(-0.5rem);
+}
+
+
+.shop_container {
+    padding-top: 6.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6rem, 5rem;
+}
+
+.grid
+{
+    display: grid;
+    gap: 3.5rem;
+}
+
+.shop_card {
+    position: relative;
+    background-color: var(--gradient-card);
+    padding: 5.75rem .75rem 1.25rem .75rem;
+    border: 2px solid var(--first-color-light);
+    border-radius: 1rem;
+}
+
+.shop_img {
+    position: absolute;
+    top: -3.5rem;
+    left: 0;
+    right: 0;
+    width: 130px;
+    margin: 0 auto;
+    transition: transform .4s;
+}
+
+.shop_title {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: 0.5rem;
+}
+
+.shop_price {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.shop_btn {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    outline: none;
+    border: none;
+    background-color: var(--white-color);
+    padding: 6%;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    display: grid;
+    cursor: pointer;
+}
+
+.shop_card:hover .shop_img {
+    transform: translateY(-.5rem);
+}
+
+
+.care_container
+{
+    padding: 2rem;
+    row-gap: 2rem;
+}
+
+.care_img
+{
+    width: 270px;
+    filter: drop-shadow(var(--shadow-img));
+    justify-self: center;
+}
+
+.care_list
+{
+    display: grid;
+    row-gap: 1rem;
+}
+
+.care_item
+{
+    display: flex;
+    column-gap: .5rem;
+    align-items: flex-start;
+}
+
+.care_item i{
+    font-size: 1.5rem;
+    color: var(--first-color);
+}
+
