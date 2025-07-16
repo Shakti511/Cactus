@@ -69,3 +69,18 @@ const scrollActive = () => {
 }
 
 window.addEventListener('scroll', scrollActive)
+
+/*===== scroll animation ======= */
+
+const sr = ScrollReveal({
+  origin:'top',
+  distance: '80px',
+  duration: 2500,
+  delay:200,
+  reset:true,
+})
+
+sr.reveal('.home_img,new_data, .care_img, .contact_content, .footer')
+sr.reveal('.home_data, ,care_list, .contact_img', {delay: 250})
+sr.reveal('.new_card',{delay: 250, interval: 50})
+sr.reveal('.shop_card', {interval: 50})
